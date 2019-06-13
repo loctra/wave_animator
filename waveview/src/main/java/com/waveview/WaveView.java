@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.waveview.waveview.R;
-import com.bumptech.glide.Glide;
 import com.joooonho.SelectableRoundedImageView;
 
 public class WaveView extends RelativeLayout {
@@ -110,15 +109,11 @@ public class WaveView extends RelativeLayout {
 
         SelectableRoundedImageView imageView = new SelectableRoundedImageView(context);
         imageView.setOval(true);
-        imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.bg_white));
+        imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.oto));
         frameRoundWave.setLayoutParams(layoutParams);
         final FrameLayout.LayoutParams layoutParams1 = new FrameLayout.LayoutParams(width * 2 / 3, width * 2 / 3);
         layoutParams1.gravity = Gravity.CENTER;
         imageView.setLayoutParams(layoutParams1);
-        Glide.with(context)
-                .asDrawable()
-                .load(R.drawable.oto)
-                .into(imageView);
         frameRoundWave.addView(imageView);
 
         RoundWaveView roundWaveView1 = new RoundWaveView(context);
