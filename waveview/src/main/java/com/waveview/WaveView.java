@@ -135,14 +135,14 @@ public class WaveView extends RelativeLayout {
         return length *2/3;
     }
 
-    public void updatePhoto(String url){
+    public void setPhoto(String url){
         if (imageView != null) {
             Glide.with(context).load(url).into(imageView);
             invalidate();
         }
     }
 
-    public void updatePhoto(int res){
+    public void setPhoto(int res){
         if (imageView != null) {
             Glide.with(context).load(res).into(imageView);
             invalidate();

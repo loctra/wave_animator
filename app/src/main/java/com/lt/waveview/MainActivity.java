@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         WaveView wvNormal = findViewById(R.id.wave_normal);
         WaveView wvPositive = findViewById(R.id.wave_positive);
         WaveView wvNegative = findViewById(R.id.wave_negative);
-        wvNormal.updatePhoto(R.drawable.oto_bmw);
-        wvPositive.updatePhoto(R.drawable.oto_bmw);
-        wvNegative.updatePhoto(R.drawable.oto_bmw);
+        wvNormal.setPhoto(R.drawable.oto_bmw);
+        wvPositive.setPhoto(R.drawable.oto_bmw);
+        wvNegative.setPhoto(R.drawable.oto_bmw);
     }
 }
