@@ -2,5 +2,6 @@
 <resources>
     <dimen name="d_60">60dp</dimen>
     <dimen name="d_300">300dp</dimen>
+    <dimen name="d_150">150dp</dimen>
     <dimen name="d_200">200dp</dimen>
 </resources>

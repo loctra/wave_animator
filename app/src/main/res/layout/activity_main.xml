@@ -26,6 +26,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:roundWaveType="normal"
+            app:waveW="150dp"
             app:waveH="20dp" />
 
         <TextView
@@ -42,6 +43,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:roundWaveType="positive"
+            app:waveW="150dp"
             app:waveH="20dp" />
 
         <TextView
@@ -58,7 +60,8 @@
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:roundWaveType="negative"
-            app:waveH="20dp" />
+            app:waveH="20dp"
+            app:waveW="150dp" />
 
     </LinearLayout>
 

@@ -7,13 +7,13 @@
 
     <declare-styleable name="MainWaveView">
         <attr name="waveH" format="dimension" />
+        <attr name="waveW" format="dimension" />
         <attr name="roundWaveType" format="enum">
             <enum name="normal" value="0"/>
             <enum name="positive" value="1"/>
             <enum name="negative" value="2"/>
         </attr>
-
-
+        <attr name="waveRes" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="HorizontalWaveView">
