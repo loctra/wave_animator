@@ -3,7 +3,8 @@ package com.waveview;
 public enum RoundType {
     normal(0),
     positive(1),
-    negative(2);
+    negative(2),
+    all(3);
 
     public int value;
 

@@ -8,7 +8,9 @@
     <declare-styleable name="MainWaveView">
         <attr name="waveH" format="dimension" />
         <attr name="waveW" format="dimension" />
+        <attr name="waveCount" format="integer" />
         <attr name="roundWaveType" format="enum">
+            <enum name="all" value="3"/>
             <enum name="normal" value="0"/>
             <enum name="positive" value="1"/>
             <enum name="negative" value="2"/>

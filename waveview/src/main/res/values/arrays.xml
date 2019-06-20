@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="balls">
+    <item>#FF5C5C</item>
+    <item>#62CAFE</item>
+    <item>#FFE100</item>
+    <item>#97E29A</item>
+    <item>#A56BE5</item>
+  </string-array>
+
+  <string-array name="wave">
+    <item>#FFB8C4</item>
+    <item>#DDDDDD</item>
+  </string-array>
+
+</resources>

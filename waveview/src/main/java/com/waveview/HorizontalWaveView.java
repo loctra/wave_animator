@@ -63,8 +63,8 @@ public class HorizontalWaveView extends View {
         mPath = new Path();
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(2);
-        mPaint.setColor(waveColor);
+        mPaint.setStrokeWidth(3);
+        mPaint.setColor(ContextCompat.getColor(context,R.color.pink));
 
         a.recycle();
         initAnimation();
@@ -86,7 +86,7 @@ public class HorizontalWaveView extends View {
         setWaveNumber(20);
         setWaveHeight(waveHeight);
         setWaveVerticalPosition(2);
-        setStrokeWidth(0.7f);
+        setStrokeWidth(1.2f);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class HorizontalWaveView extends View {
                 if (x == 0) {
                     mPath.moveTo(width, y);
                 } else {
-                    mPath.lineTo(width - x, y);
+                    mPath.lineTo(width - x +i*3, y);
                 }
             }
         }

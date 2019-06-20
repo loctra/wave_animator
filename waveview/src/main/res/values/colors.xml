@@ -6,6 +6,8 @@
     <color name="white">#FFFFFF</color>
     <color name="white1">#FE6277</color>
     <color name="white2">#F0C95A</color>
+    <color name="pink">#FFB8C4</color>
+    <color name="gray">#DDDDDD</color>
 
     <color name="ware">#40FE6277</color>
     <color name="normal_1_1">#FE6277</color>
@@ -22,4 +24,10 @@
     <color name="negative_1_2">#7161BE</color>
     <color name="negative_2_1">#88B2DA</color>
     <color name="negative_2_2">#B1DCA0</color>
+
+    <color name="red">#FF5C5C</color>
+    <color name="blue">#62CAFE</color>
+    <color name="yellow">#FFE100</color>
+    <color name="green">#97E29A</color>
+    <color name="violet">#A56BE5</color>
 </resources>

@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000">
+    android:background="#fff">
+
+
+    <com.waveview.WaveView
+        android:id="@+id/wave_all"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:layout_centerInParent="true"
+        app:roundWaveType="all"
+        app:waveW="250dp"
+        app:waveH="50dp"
+        android:visibility="visible"
+        app:waveCount="30"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +25,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="20dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +41,7 @@
             android:background="@color/white"
             app:roundWaveType="normal"
             app:waveW="150dp"
-            app:waveH="20dp" />
+            app:waveH="30dp" />
 
         <TextView
             android:layout_width="wrap_content"

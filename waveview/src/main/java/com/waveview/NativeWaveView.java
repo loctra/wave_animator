@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.waveview.waveview.R;
 import com.joooonho.SelectableRoundedImageView;
 
+@Deprecated
 public class NativeWaveView extends RelativeLayout {
 
 

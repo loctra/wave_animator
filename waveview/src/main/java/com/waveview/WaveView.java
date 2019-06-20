@@ -1,10 +1,7 @@
 package com.waveview;
 
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -12,13 +9,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.joooonho.SelectableRoundedImageView;
+import com.waveview.balls.BallsView;
 import com.waveview.waveview.R;
 
 public class WaveView extends RelativeLayout {
 
-    public static final int MARGIN = -30;
+    public static final int MARGIN = -70;
 
     public WaveView(Context context) {
         super(context);
@@ -45,6 +42,7 @@ public class WaveView extends RelativeLayout {
     private int width = 0;
     private int res = R.drawable.bg_white;
     private float waveHeight;
+    private int waveCount;
 
     private RoundType roundType = RoundType.normal;
     private SelectableRoundedImageView imageView;
@@ -61,6 +59,7 @@ public class WaveView extends RelativeLayout {
             try {
                 waveHeight = typedArray.getDimension(R.styleable.MainWaveView_waveH, 30);
                 width = (int)typedArray.getDimension(R.styleable.MainWaveView_waveW, context.getResources().getDimension(R.dimen.d_150));
+                waveCount = typedArray.getInt(R.styleable.MainWaveView_waveCount, 20);
                 res = typedArray.getResourceId(R.styleable.MainWaveView_waveRes, R.drawable.bg_white);
                 roundType = RoundType.getFromInt(typedArray.getInt(R.styleable.MainWaveView_roundWaveType, roundType.value));
                 init();
@@ -80,6 +79,7 @@ public class WaveView extends RelativeLayout {
         HorizontalWaveView horizontalWaveView = new HorizontalWaveView(context);
         horizontalWaveView.setLayoutParams(mainParams);
         horizontalWaveView.initDefaultView(R.color.ware, waveHeight);
+        horizontalWaveView.setWaveNumber(waveCount);
         horizontalWaveView.startAnimation();
         mainParams.leftMargin = MARGIN;
         mainParams.rightMargin = MARGIN;
@@ -90,13 +90,9 @@ public class WaveView extends RelativeLayout {
         layoutParams = new FrameLayout.LayoutParams(width, width);
         layoutParams.gravity = Gravity.CENTER;
 
-        ImageView roundWaveView2 = new ImageView(context);
-        roundWaveView2.setLayoutParams(mainParams);
-        Glide.with(context).asGif().load(R.drawable.particle_rect).into(roundWaveView2);
-
-        addView(roundWaveView2);
         addRounds(context, layoutParams);
         addView(horizontalWaveView);
+        addView(new BallsView(context));
         addView(framePhoto);
     }
 
@@ -124,6 +120,9 @@ public class WaveView extends RelativeLayout {
                 break;
             case negative:
                 Glide.with(context).asGif().load(R.drawable.negative).into(roundWaveView);
+                break;
+            case all:
+                Glide.with(context).asGif().load(R.drawable.all).into(roundWaveView);
                 break;
         }
 
