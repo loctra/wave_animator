@@ -15,7 +15,7 @@ import com.waveview.waveview.R;
 
 public class WaveView extends RelativeLayout {
 
-    public static final int MARGIN = -70;
+    public static final int MARGIN = -1;
 
     public WaveView(Context context) {
         super(context);
@@ -47,11 +47,6 @@ public class WaveView extends RelativeLayout {
     private RoundType roundType = RoundType.normal;
     private SelectableRoundedImageView imageView;
 
-    @Override
-    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, widthMeasureSpec);
-    }
-
     private void initAttrs(Context context, AttributeSet attrs) {
         this.context = context;
         if (attrs != null) {
@@ -81,9 +76,8 @@ public class WaveView extends RelativeLayout {
         horizontalWaveView.initDefaultView(R.color.ware, waveHeight);
         horizontalWaveView.setWaveNumber(waveCount);
         horizontalWaveView.startAnimation();
-        mainParams.leftMargin = MARGIN;
-        mainParams.rightMargin = MARGIN;
-
+        mainParams.leftMargin = MARGIN *width/2;
+        mainParams.rightMargin = MARGIN*width/2;
         frameRoundWave = new FrameLayout(context);
         framePhoto = new FrameLayout(context);
         framePhoto.setLayoutParams(mainParams);

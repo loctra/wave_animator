@@ -4,8 +4,10 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PointF;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,7 +22,7 @@ public class HorizontalWaveView extends View {
     private float frequency = 1.0f;
     private float IdleAmplitude = 0.00f;
     private int waveNumber = 2;
-    private float phaseShift = -0.03f;
+    private float phaseShift = -0.05f;
     private float initialPhaseOffset = 0.0f;
     private float waveHeight;
     private float waveVerticalPosition = 2;
@@ -64,7 +66,7 @@ public class HorizontalWaveView extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(3);
-        mPaint.setColor(ContextCompat.getColor(context,R.color.pink));
+        mPaint.setColor(ContextCompat.getColor(context, R.color.pink));
 
         a.recycle();
         initAnimation();
@@ -97,7 +99,6 @@ public class HorizontalWaveView extends View {
 
     private void updatePath() {
         mPath.reset();
-
         phase += phaseShift;
         amplitude = Math.max(level, IdleAmplitude);
 
@@ -105,9 +106,7 @@ public class HorizontalWaveView extends View {
             float halfHeight = getHeight() / waveVerticalPosition;
             float width = getWidth();
             float mid = width / 2.0f;
-
             float maxAmplitude = halfHeight - (halfHeight - waveHeight);
-
             float progress = 1.0f - (float) i / waveNumber;
             float normedAmplitude = (1.5f * progress - 0.5f) * amplitude;
 
@@ -117,8 +116,9 @@ public class HorizontalWaveView extends View {
                         scaling *
                                 maxAmplitude *
                                 normedAmplitude *
-                                Math.sin(2 * Math.PI * (x / width) * frequency + phase + initialPhaseOffset) +
-                                halfHeight);
+                                Math.sin(2 * Math.PI * (x / width)
+                                        + phase)
+                                + halfHeight);
                 if (x == 0) {
                     mPath.moveTo(width, y);
                 } else {
