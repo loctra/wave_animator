@@ -27,6 +27,7 @@
             app:disableHorizontal="true"
             app:waveW="250dp"
             app:waveH="80dp"
+            app:isOval="false"
             app:waveCount="50"/>
 
 

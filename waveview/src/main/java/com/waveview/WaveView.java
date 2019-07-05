@@ -42,6 +42,7 @@ public class WaveView extends RelativeLayout {
     private int width = 0;
     private int res = R.drawable.bg_white;
     private boolean disableHorizontal;
+    private boolean isOval;
     private float waveHeight;
     private int waveCount;
 
@@ -59,6 +60,7 @@ public class WaveView extends RelativeLayout {
                 waveCount = typedArray.getInt(R.styleable.MainWaveView_waveCount, 20);
                 res = typedArray.getResourceId(R.styleable.MainWaveView_waveRes, R.drawable.bg_white);
                 disableHorizontal = typedArray.getBoolean(R.styleable.MainWaveView_disableHorizontal,false);
+                isOval = typedArray.getBoolean(R.styleable.MainWaveView_isOval,true);
                 roundType = RoundType.getFromInt(typedArray.getInt(R.styleable.MainWaveView_roundWaveType, roundType.value));
                 init();
 
@@ -99,7 +101,7 @@ public class WaveView extends RelativeLayout {
         framePhoto.removeAllViews();
 
         imageViewRound = new SelectableRoundedImageView(context);
-        imageViewRound.setOval(true);
+        imageViewRound.setOval(isOval);
         Glide.with(context).load(res).into(imageViewRound);
         frameRoundWave.setLayoutParams(layoutParams);
         final FrameLayout.LayoutParams layoutParams1 = new FrameLayout.LayoutParams(roundWidthHeight(width), roundWidthHeight(width));

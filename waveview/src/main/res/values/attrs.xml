@@ -17,6 +17,7 @@
         </attr>
         <attr name="waveRes" format="reference" />
         <attr name="disableHorizontal" format="boolean" />
+        <attr name="isOval" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="HorizontalWaveView">
