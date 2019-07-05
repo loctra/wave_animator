@@ -24,6 +24,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:roundWaveType="normal"
+            app:disableHorizontal="true"
             app:waveW="250dp"
             app:waveH="80dp"
             app:waveCount="50"/>

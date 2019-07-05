@@ -41,11 +41,13 @@ public class WaveView extends RelativeLayout {
 
     private int width = 0;
     private int res = R.drawable.bg_white;
+    private boolean disableHorizontal;
     private float waveHeight;
     private int waveCount;
 
     private RoundType roundType = RoundType.normal;
-    private SelectableRoundedImageView imageView;
+    private SelectableRoundedImageView imageViewRound;
+//    private ImageView imageView;
 
     private void initAttrs(Context context, AttributeSet attrs) {
         this.context = context;
@@ -56,6 +58,7 @@ public class WaveView extends RelativeLayout {
                 width = (int)typedArray.getDimension(R.styleable.MainWaveView_waveW, context.getResources().getDimension(R.dimen.d_150));
                 waveCount = typedArray.getInt(R.styleable.MainWaveView_waveCount, 20);
                 res = typedArray.getResourceId(R.styleable.MainWaveView_waveRes, R.drawable.bg_white);
+                disableHorizontal = typedArray.getBoolean(R.styleable.MainWaveView_disableHorizontal,false);
                 roundType = RoundType.getFromInt(typedArray.getInt(R.styleable.MainWaveView_roundWaveType, roundType.value));
                 init();
 
@@ -85,7 +88,9 @@ public class WaveView extends RelativeLayout {
         layoutParams.gravity = Gravity.CENTER;
 
         addRounds(context, layoutParams);
-        addView(horizontalWaveView);
+        if (!disableHorizontal) {
+            addView(horizontalWaveView);
+        }
         addView(new BallsView(context));
         addView(framePhoto);
     }
@@ -93,14 +98,15 @@ public class WaveView extends RelativeLayout {
     void addRounds(Context context, FrameLayout.LayoutParams layoutParams) {
         framePhoto.removeAllViews();
 
-        imageView = new SelectableRoundedImageView(context);
-        imageView.setOval(true);
-        Glide.with(context).load(res).into(imageView);
+        imageViewRound = new SelectableRoundedImageView(context);
+        imageViewRound.setOval(true);
+        Glide.with(context).load(res).into(imageViewRound);
         frameRoundWave.setLayoutParams(layoutParams);
         final FrameLayout.LayoutParams layoutParams1 = new FrameLayout.LayoutParams(roundWidthHeight(width), roundWidthHeight(width));
         layoutParams1.gravity = Gravity.CENTER;
-        imageView.setLayoutParams(layoutParams1);
-        frameRoundWave.addView(imageView);
+        layoutParams1.setMargins(50, 50, 50, 50);
+        imageViewRound.setLayoutParams(layoutParams1);
+        frameRoundWave.addView(imageViewRound);
 
         ImageView roundWaveView = new ImageView(context);
         roundWaveView.setLayoutParams(layoutParams);
@@ -125,19 +131,19 @@ public class WaveView extends RelativeLayout {
     }
 
     private int roundWidthHeight(int length){
-        return length *2/3;
+        return length * 2/3;
     }
 
     public void setPhoto(String url){
-        if (imageView != null) {
-            Glide.with(context).load(url).into(imageView);
+        if (imageViewRound != null) {
+            Glide.with(context).load(url).into(imageViewRound);
             invalidate();
         }
     }
 
     public void setPhoto(int res){
-        if (imageView != null) {
-            Glide.with(context).load(res).into(imageView);
+        if (imageViewRound != null) {
+            Glide.with(context).load(res).into(imageViewRound);
             invalidate();
         }
     }

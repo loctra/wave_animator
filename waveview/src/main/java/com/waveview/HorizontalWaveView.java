@@ -65,7 +65,7 @@ public class HorizontalWaveView extends View {
         mPath = new Path();
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(3);
+        mPaint.setStrokeWidth(1.2f);
         mPaint.setColor(ContextCompat.getColor(context, R.color.pink));
 
         a.recycle();
