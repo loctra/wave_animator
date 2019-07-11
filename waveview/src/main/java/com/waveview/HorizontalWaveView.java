@@ -21,7 +21,7 @@ public class HorizontalWaveView extends View {
 
     private float frequency = 1.0f;
     private float IdleAmplitude = 0.00f;
-    private int waveNumber = 2;
+    private int waveNumber = 20;
     private float phaseShift = -0.05f;
     private float initialPhaseOffset = 0.0f;
     private float waveHeight;
@@ -60,12 +60,12 @@ public class HorizontalWaveView extends View {
         waveHeight = a.getDimension(R.styleable.HorizontalWaveView_waveHeight, waveHeight);
         waveColor = a.getColor(R.styleable.HorizontalWaveView_waveColor, waveColor);
         waveVerticalPosition = a.getFloat(R.styleable.HorizontalWaveView_waveVerticalPosition, waveVerticalPosition);
-        waveNumber = a.getInteger(R.styleable.HorizontalWaveView_waveAmount, waveNumber);
+        waveNumber = a.getInteger(R.styleable.HorizontalWaveView_waveAmount, 20);
 
         mPath = new Path();
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(1.2f);
+        mPaint.setStrokeWidth(0.7f);
         mPaint.setColor(ContextCompat.getColor(context, R.color.pink));
 
         a.recycle();
@@ -88,13 +88,15 @@ public class HorizontalWaveView extends View {
         setWaveNumber(20);
         setWaveHeight(waveHeight);
         setWaveVerticalPosition(2);
-        setStrokeWidth(1.2f);
+        setStrokeWidth(0.7f);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.save();
         canvas.drawPath(mPath, mPaint);
         updatePath();
+        canvas.restore();
     }
 
     private void updatePath() {
@@ -162,7 +164,7 @@ public class HorizontalWaveView extends View {
     }
 
     public void setWaveNumber(int waveNumber) {
-        this.waveNumber = waveNumber;
+        this.waveNumber = waveNumber >= 50 ? 50 : waveNumber;
         invalidate();
     }
 

@@ -82,7 +82,6 @@ public class RoundWaveView extends View {
 
         currentCx = (float) (cx + wx + r * distRatio * Math.cos(lastTranslationAngle));
         currentCy = (float) (cy + wy + r * distRatio * Math.sin(lastTranslationAngle));
-
     }
 
     private void init(int pointCount) {

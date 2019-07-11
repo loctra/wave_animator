@@ -7,19 +7,34 @@ import com.waveview.WaveView;
 
 public class MainActivity extends AppCompatActivity {
 
+    WaveView wvNormal;
+    WaveView wvPositive;
+    WaveView wvNegative;
+    WaveView wvAll;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WaveView wvNormal = findViewById(R.id.wave_normal);
-        WaveView wvPositive = findViewById(R.id.wave_positive);
-        WaveView wvNegative = findViewById(R.id.wave_negative);
-        WaveView wvAll = findViewById(R.id.wave_all);
+         wvNormal = findViewById(R.id.wave_normal);
+         wvPositive = findViewById(R.id.wave_positive);
+         wvNegative = findViewById(R.id.wave_negative);
+         wvAll = findViewById(R.id.wave_all);
 
         wvNormal.setPhoto(R.drawable.oto_bmw);
         wvPositive.setPhoto(R.drawable.oto_bmw);
         wvNegative.setPhoto(R.drawable.oto_bmw);
         wvAll.setPhoto(R.drawable.oto_bmw);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        wvAll.onDestroy();
+        wvNegative.onDestroy();
+        wvNormal.onDestroy();
+        wvPositive.onDestroy();
     }
 }

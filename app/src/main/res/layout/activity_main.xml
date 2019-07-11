@@ -10,87 +10,115 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <com.waveview.WaveView
-            android:id="@+id/wave_all"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/d_300"
-            android:layout_marginTop="5dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_300">
+
+                <!--<com.waveview.HorizontalWaveView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:layout_marginLeft="-80dp"-->
+                    <!--android:layout_marginRight="-80dp"-->
+                    <!--app:waveAmount="30"-->
+                    <!--app:waveHeight="@dimen/d_60" />-->
+
+                <com.waveview.WaveView
+                    android:id="@+id/wave_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_300"
+                    android:layout_marginTop="5dp"
+                    app:disableHorizontal="false"
+                    app:isOval="false"
+                    app:roundWaveType="all"
+                    app:waveCount="50"
+                    app:waveH="80dp"
+                    app:waveW="250dp" />
+
+            </RelativeLayout>
+
+            <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <com.waveview.WaveView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="5dp"
             android:background="@color/white"
-            app:roundWaveType="normal"
-            app:disableHorizontal="true"
-            app:waveW="250dp"
-            app:waveH="80dp"
-            app:isOval="false"
-            app:waveCount="50"/>
+            app:roundWaveType="all"
+            app:waveW="50dp"
+            app:waveH="30dp" />
 
 
-        <TextView
+            </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NORMAL"
             android:layout_marginTop="20dp"
             android:textColor="@color/colorPrimary" />
 
-        <com.waveview.WaveView
+            <com.waveview.WaveView
             android:id="@+id/wave_normal"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:roundWaveType="normal"
-            android:visibility="gone"
-            app:waveCount="40"
             app:waveW="150dp"
             app:waveH="50dp" />
 
-        <TextView
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="POSITIVE"
             android:textColor="@color/colorPrimary" />
 
-        <com.waveview.WaveView
+            <com.waveview.WaveView
             android:id="@+id/wave_positive"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:background="@color/white"
-            android:visibility="gone"
-
             app:roundWaveType="positive"
-            app:waveCount="50"
             app:waveW="150dp"
             app:waveH="50dp" />
 
-        <TextView
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="NEGATIVE"
             android:textColor="@color/colorPrimary" />
 
-        <com.waveview.WaveView
+            <com.waveview.WaveView
             android:id="@+id/wave_negative"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:background="@color/white"
-            android:visibility="gone"
-
             app:roundWaveType="negative"
-            app:waveCount="50"
             app:waveH="50dp"
             app:waveW="150dp" />
 
-    </LinearLayout>
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

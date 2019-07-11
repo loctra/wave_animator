@@ -9,6 +9,7 @@ import com.waveview.waveview.R;
 import java.util.Random;
 
 public class ArrayColorGenerator implements PaintGenerator {
+
   private int[] colors = {R.color.red, R.color.blue, R.color.yellow,R.color.green,R.color.violet};
 
   @Override

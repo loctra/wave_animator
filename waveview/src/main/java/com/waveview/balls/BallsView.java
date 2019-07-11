@@ -20,11 +20,13 @@ import java.util.List;
 import java.util.Random;
 
 public class BallsView extends View {
-    public static final int MAX_BALLS = 6;
+    public static final int MAX_BALLS = 4;
+    public static final int REPEAT_TIME  = 10000;
     private float width = 0;
+    private float height = 0;
     private List<Ball> balls = new ArrayList<>();
 
-    private ObjectAnimator mAmplitudeAnimator;
+    private ObjectAnimator animator;
     private float amplitude;
 
     public BallsView(Context context) {
@@ -51,6 +53,7 @@ public class BallsView extends View {
             @Override
             public void run() {
                 width = getWidth();
+                height = getHeight();
                 initBalls();
                 initAnimation();
             }
@@ -59,16 +62,16 @@ public class BallsView extends View {
     }
 
     private void initAnimation() {
-        if (mAmplitudeAnimator == null) {
-            mAmplitudeAnimator = ObjectAnimator.ofFloat(this, "amplitude", 1f);
-            mAmplitudeAnimator.setDuration(6000);
-            mAmplitudeAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+        if (animator == null) {
+            animator = ObjectAnimator.ofFloat(this, "amplitude", 1f);
+            animator.setDuration(REPEAT_TIME);
+            animator.setRepeatCount(ObjectAnimator.INFINITE);
         }
-        if (!mAmplitudeAnimator.isRunning()) {
-            mAmplitudeAnimator.start();
+        if (!animator.isRunning()) {
+            animator.start();
         }
 
-        mAmplitudeAnimator.addListener(new AnimatorListenerAdapter() {
+        animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationRepeat(Animator animation) {
                 initBalls();
@@ -121,6 +124,14 @@ public class BallsView extends View {
         ball.draw(canvas);
     }
 
+    public void stopAnimation() {
+        if (animator != null) {
+            animator.removeAllListeners();
+            animator.end();
+            animator.cancel();
+        }
+    }
+
     private void setAmplitude(float amplitude) {
         this.amplitude = amplitude;
         invalidate();
@@ -134,7 +145,7 @@ public class BallsView extends View {
         balls.clear();
         int count = getSizeInRange(4, MAX_BALLS);
         for (int i = 0; i < count; i++) {
-            PointF pointF = new PointF(width / 2, width / 2);
+            PointF pointF = new PointF(width / 2, height / 2);
             balls.add(generateBallFrom(pointF));
         }
     }
@@ -144,7 +155,11 @@ public class BallsView extends View {
         Ball ball = (Ball) ballGenerator.generate(point, new ArrayColorGenerator().generate(getContext()));
         int x = getSizeInRange(1, 8);
         ball.setRoute(x);
-        ball.setRadius(getSizeInRange(5, 10));
+        if (width < 500) {
+            ball.setRadius(getSizeInRange(2, 5));
+        } else {
+            ball.setRadius(getSizeInRange(5, 10));
+        }
         return ball;
     }
 
