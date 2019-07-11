@@ -155,8 +155,10 @@ public class BallsView extends View {
         Ball ball = (Ball) ballGenerator.generate(point, new ArrayColorGenerator().generate(getContext()));
         int x = getSizeInRange(1, 8);
         ball.setRoute(x);
-        if (width < 500) {
-            ball.setRadius(getSizeInRange(2, 5));
+        if (width < 500 && width >300) {
+            ball.setRadius(getSizeInRange(2, 6));
+        }else if(width <= 300){
+            ball.setRadius(getSizeInRange(1, 4));
         } else {
             ball.setRadius(getSizeInRange(5, 10));
         }

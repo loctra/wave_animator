@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.joooonho.SelectableRoundedImageView;
 import com.waveview.balls.BallsView;
 import com.waveview.waveview.R;
+
 import pl.droidsonroids.gif.GifImageView;
 
 public class WaveView extends RelativeLayout {
@@ -57,11 +58,11 @@ public class WaveView extends RelativeLayout {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MainWaveView);
             try {
                 waveHeight = typedArray.getDimension(R.styleable.MainWaveView_waveH, 30);
-                width = (int)typedArray.getDimension(R.styleable.MainWaveView_waveW, context.getResources().getDimension(R.dimen.d_150));
+                width = (int) typedArray.getDimension(R.styleable.MainWaveView_waveW, context.getResources().getDimension(R.dimen.d_150));
                 waveCount = typedArray.getInt(R.styleable.MainWaveView_waveCount, 20);
                 res = typedArray.getResourceId(R.styleable.MainWaveView_waveRes, R.drawable.bg_white);
-                disableHorizontal = typedArray.getBoolean(R.styleable.MainWaveView_disableHorizontal,false);
-                isOval = typedArray.getBoolean(R.styleable.MainWaveView_isOval,true);
+                disableHorizontal = typedArray.getBoolean(R.styleable.MainWaveView_disableHorizontal, false);
+                isOval = typedArray.getBoolean(R.styleable.MainWaveView_isOval, true);
                 roundType = RoundType.getFromInt(typedArray.getInt(R.styleable.MainWaveView_roundWaveType, roundType.value));
                 init();
 
@@ -82,8 +83,8 @@ public class WaveView extends RelativeLayout {
         horizontalWaveView.initDefaultView(R.color.ware, waveHeight);
         horizontalWaveView.setWaveNumber(waveCount);
         horizontalWaveView.startAnimation();
-        mainParams.leftMargin = MARGIN *width/2;
-        mainParams.rightMargin = MARGIN*width/2;
+        mainParams.leftMargin = MARGIN * width / 2;
+        mainParams.rightMargin = MARGIN * width / 2;
         frameRoundWave = new FrameLayout(context);
         framePhoto = new FrameLayout(context);
         framePhoto.setLayoutParams(mainParams);
@@ -132,31 +133,31 @@ public class WaveView extends RelativeLayout {
                 break;
         }
 
-        roundWaveView.setBackgroundResource( res);
+        roundWaveView.setBackgroundResource(res);
         framePhoto.addView(roundWaveView);
         framePhoto.addView(frameRoundWave);
         invalidate();
     }
 
-    private int roundWidthHeight(int length){
-        return length * 2/3;
+    private int roundWidthHeight(int length) {
+        return length * 2 / 3;
     }
 
-    public void setPhoto(String url){
+    public void setPhoto(String url) {
         if (imageViewRound != null) {
             Glide.with(context).load(url).into(imageViewRound);
             invalidate();
         }
     }
 
-    public void setPhoto(int res){
+    public void setPhoto(int res) {
         if (imageViewRound != null) {
             Glide.with(context).load(res).into(imageViewRound);
             invalidate();
         }
     }
 
-    public void onDestroy(){
+    public void onDestroy() {
         if (horizontalWaveView != null) {
             horizontalWaveView.stopAnimation();
         }
