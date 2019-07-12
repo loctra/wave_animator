@@ -1,7 +1,10 @@
 package com.lt.waveview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import com.waveview.WaveView;
 
@@ -22,10 +25,20 @@ public class MainActivity extends AppCompatActivity {
          wvNegative = findViewById(R.id.wave_negative);
          wvAll = findViewById(R.id.wave_all);
 
-        wvNormal.setPhoto(R.drawable.oto_bmw);
-        wvPositive.setPhoto(R.drawable.oto_bmw);
-        wvNegative.setPhoto(R.drawable.oto_bmw);
-        wvAll.setPhoto(R.drawable.oto_bmw);
+        wvNormal.setPhotoUrl(R.drawable.oto_bmw);
+        wvPositive.setPhotoUrl(R.drawable.oto_bmw);
+        wvNegative.setPhotoUrl(R.drawable.oto_bmw);
+
+        wvAll.setPhotoUrl("https://via.placeholder.com/300.png");
+
+        Button btnDemo = findViewById(R.id.btn);
+        btnDemo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainDemoBigRoundWave.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

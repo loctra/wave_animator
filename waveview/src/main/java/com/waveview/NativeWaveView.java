@@ -119,34 +119,34 @@ public class NativeWaveView extends RelativeLayout {
         imageView.setLayoutParams(layoutParams1);
         frameRoundWave.addView(imageView);
 
-        RoundWaveView roundWaveView1 = new RoundWaveView(context);
-        RoundWaveView roundWaveView2 = new RoundWaveView(context);
-        roundWaveView1.setLayoutParams(layoutParams);
-        roundWaveView2.setLayoutParams(layoutParams);
+        NativeRoundWaveView nativeRoundWaveView1 = new NativeRoundWaveView(context);
+        NativeRoundWaveView nativeRoundWaveView2 = new NativeRoundWaveView(context);
+        nativeRoundWaveView1.setLayoutParams(layoutParams);
+        nativeRoundWaveView2.setLayoutParams(layoutParams);
 
         switch (roundType) {
             case normal:
-                roundWaveView1.setColor(new int[]{R.color.normal_1_1,R.color.normal_1_2});
-                roundWaveView2.setColor(new int[]{R.color.normal_2_1,R.color.normal_2_2});
-                roundWaveView1.setPointCount(countWave[0]);
-                roundWaveView2.setPointCount(countWave[0]);
+                nativeRoundWaveView1.setColor(new int[]{R.color.normal_1_1,R.color.normal_1_2});
+                nativeRoundWaveView2.setColor(new int[]{R.color.normal_2_1,R.color.normal_2_2});
+                nativeRoundWaveView1.setPointCount(countWave[0]);
+                nativeRoundWaveView2.setPointCount(countWave[0]);
                 break;
             case positive:
-                roundWaveView1.setColor(new int[]{R.color.positive_1_1,R.color.positive_1_2});
-                roundWaveView2.setColor(new int[]{R.color.positive_2_1,R.color.positive_2_2});
-                roundWaveView1.setPointCount(countWave[1]);
-                roundWaveView2.setPointCount(countWave[1]);
+                nativeRoundWaveView1.setColor(new int[]{R.color.positive_1_1,R.color.positive_1_2});
+                nativeRoundWaveView2.setColor(new int[]{R.color.positive_2_1,R.color.positive_2_2});
+                nativeRoundWaveView1.setPointCount(countWave[1]);
+                nativeRoundWaveView2.setPointCount(countWave[1]);
                 break;
             case negative:
-                roundWaveView1.setColor(new int[]{R.color.negative_1_1,R.color.negative_1_2});
-                roundWaveView2.setColor(new int[]{R.color.negative_2_1,R.color.negative_2_2});
-                roundWaveView1.setPointCount(countWave[2]);
-                roundWaveView2.setPointCount(countWave[2]);
+                nativeRoundWaveView1.setColor(new int[]{R.color.negative_1_1,R.color.negative_1_2});
+                nativeRoundWaveView2.setColor(new int[]{R.color.negative_2_1,R.color.negative_2_2});
+                nativeRoundWaveView1.setPointCount(countWave[2]);
+                nativeRoundWaveView2.setPointCount(countWave[2]);
                 break;
         }
 
-        framePhoto.addView(roundWaveView1);
-        framePhoto.addView(roundWaveView2);
+        framePhoto.addView(nativeRoundWaveView1);
+        framePhoto.addView(nativeRoundWaveView2);
         framePhoto.addView(frameRoundWave);
     }
 }

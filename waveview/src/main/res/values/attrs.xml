@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RoundWaveView">
+    <declare-styleable name="NativeRoundWaveView">
         <attr name="pointCount" format="integer" />
         <attr name="useAnimation" format="boolean" />
     </declare-styleable>
@@ -18,6 +18,9 @@
         <attr name="waveRes" format="reference" />
         <attr name="disableHorizontal" format="boolean" />
         <attr name="isOval" format="boolean" />
+        <attr name="isRect" format="boolean" />
+        <attr name="isBigSize" format="boolean" />
+        <attr name="hideRoundWave" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="HorizontalWaveView">

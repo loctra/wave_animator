@@ -43,6 +43,7 @@ public class WaveView extends RelativeLayout {
     private int width = 0;
     private int res = R.drawable.bg_white;
     private boolean disableHorizontal;
+    private boolean hideRoundWave;
     private boolean isOval;
     private float waveHeight;
     private int waveCount;
@@ -62,6 +63,7 @@ public class WaveView extends RelativeLayout {
                 waveCount = typedArray.getInt(R.styleable.MainWaveView_waveCount, 20);
                 res = typedArray.getResourceId(R.styleable.MainWaveView_waveRes, R.drawable.bg_white);
                 disableHorizontal = typedArray.getBoolean(R.styleable.MainWaveView_disableHorizontal, false);
+                hideRoundWave = typedArray.getBoolean(R.styleable.MainWaveView_hideRoundWave, false);
                 isOval = typedArray.getBoolean(R.styleable.MainWaveView_isOval, true);
                 roundType = RoundType.getFromInt(typedArray.getInt(R.styleable.MainWaveView_roundWaveType, roundType.value));
                 init();
@@ -92,6 +94,7 @@ public class WaveView extends RelativeLayout {
         layoutParams.gravity = Gravity.CENTER;
 
         addRounds(context, layoutParams);
+
         if (!disableHorizontal) {
             addView(horizontalWaveView);
         }
@@ -115,26 +118,12 @@ public class WaveView extends RelativeLayout {
         imageViewRound.setLayoutParams(layoutParams1);
         frameRoundWave.addView(imageViewRound);
 
-        GifImageView roundWaveView = new GifImageView(context);
-        roundWaveView.setLayoutParams(layoutParams);
-        int res = R.drawable.normal;
-        switch (roundType) {
-            case normal:
-                res = R.drawable.normal;
-                break;
-            case positive:
-                res = R.drawable.positive;
-                break;
-            case negative:
-                res = R.drawable.negative;
-                break;
-            case all:
-                res = R.drawable.all;
-                break;
+        if (!hideRoundWave) {
+            GifImageView roundWaveView = new GifImageView(context);
+            roundWaveView.setLayoutParams(layoutParams);
+            roundWaveView.setBackgroundResource(roundType.res);
+            framePhoto.addView(roundWaveView);
         }
-
-        roundWaveView.setBackgroundResource(res);
-        framePhoto.addView(roundWaveView);
         framePhoto.addView(frameRoundWave);
         invalidate();
     }
@@ -143,14 +132,14 @@ public class WaveView extends RelativeLayout {
         return length * 2 / 3;
     }
 
-    public void setPhoto(String url) {
+    public void setPhotoUrl(String url) {
         if (imageViewRound != null) {
             Glide.with(context).load(url).into(imageViewRound);
             invalidate();
         }
     }
 
-    public void setPhoto(int res) {
+    public void setPhotoUrl(int res) {
         if (imageViewRound != null) {
             Glide.with(context).load(res).into(imageViewRound);
             invalidate();
